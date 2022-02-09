@@ -44,14 +44,14 @@ Vue.component('edit-form', {
     data: function  () {
         return{
 
-            item: server_data.collection.items
+           datos : true
 
         }
     },
         methods:{
-            formClose()
+            closeFrom()
             {
-
+                this.$emit('formClosed' , this.datos)
             }
         }     
     
@@ -62,23 +62,17 @@ Vue.component('item-data', {
     data: function  () {
         return{
 
-            item: server_data.collection.items
+            item: server_data.collection.items,
+            datos: true,
+            edicion: false
 
         }         
     },
         methods:{
             toggleEditFormVisibility()
             {
-                if(closeForm)
-                {
-                    this.datos = true;
-                    this.edicion = false;
-                }
-                else
-                {
                     this.datos = false;
                     this.edicion = true;
-                }
                
             }
         },
@@ -93,7 +87,7 @@ var app = new Vue({
     el: '#app',
     data: {
         col: server_data,
-        item1: server_data.collection.items
+        item: server_data.collection.items,
     }
 });
 
