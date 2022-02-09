@@ -41,6 +41,19 @@ var server_data = {
 
 // TODO: Componente edit-form
 Vue.component('edit-form', {
+    data: function  () {
+        return{
+
+            item: server_data.collection.items
+
+        }
+    },
+        methods:{
+            formClose()
+            {
+
+            }
+        }     
     
 })
 
@@ -51,8 +64,23 @@ Vue.component('item-data', {
 
             item: server_data.collection.items
 
-        }
-        
+        }         
+    },
+        methods:{
+            toggleEditFormVisibility()
+            {
+                if(closeForm)
+                {
+                    this.datos = true;
+                    this.edicion = false;
+                }
+                else
+                {
+                    this.datos = false;
+                    this.edicion = true;
+                }
+               
+            }
         },
 
         template : '#itemData'

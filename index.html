@@ -23,19 +23,22 @@
 
         </div>
 
-
-
-
         <!-- Plantilla para el componente edit-form -->
         <script type="text/x-template" id="editForm">
-          
+          <div class="card-body " v-show="edicion">
+            <div v-for="d in item.data">
+                <p>{{d.prompt}}</p>
+                <textarea v-model="d.value" >  </textarea>    
+            </div>
+            <button class="btn btn-primary" v-on:click="closeForm" >Cerrar</button>
+          </div>
         </script>
         <!-- Plantilla para el componente item-data -->
         <script type="text/x-template" id="itemData">
           <div class="container">
             <div class="card-group">
             <div class="card"  v-for="item in item"> 
-              <div class="card-body" id="Listado-datos" v-show="datos">
+              <div class="card-body" v-show="datos">
 
                   <dl v-for="d in item.data">
                     <dt>{{d.prompt}}</dt>
@@ -43,6 +46,9 @@
                   </dl>
                 <a class="btn btn-primary" v-bind:href="item.href" role="button">Ver</a>
                 <button class="btn btn-secondary"  v-on:click="toggleEditFormVisibility()" >Editar</button>
+              </div>
+              <div class="card-body " v-show="edicion">
+                    
               </div>
             </div>
             </div>
