@@ -11,7 +11,7 @@ var server_data = {
                 href : "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
                 data : [
 		                {name : "name", value : "The Lord of the Rings", prompt : "Name"},
-                    {name : "description", value : "The Lord of the Rings is a film series consisting of three high fantasy adventure films directed by Peter Jackson. They are based on the novel The Lord of the Rings by J. R. R. Tolkien. The films are subtitled The Fellowship of the Ring (2001), The Two Towers (2002) and The Return of the King (2003). They are a New Zealand-American venture produced by WingNut Films and The Saul Zaentz Company and distributed by New Line Cinema.", prompt : "Description"},
+                        {name : "description", value : "The Lord of the Rings is a film series consisting of three high fantasy adventure films directed by Peter Jackson. They are based on the novel The Lord of the Rings by J. R. R. Tolkien. The films are subtitled The Fellowship of the Ring (2001), The Two Towers (2002) and The Return of the King (2003). They are a New Zealand-American venture produced by WingNut Films and The Saul Zaentz Company and distributed by New Line Cinema.", prompt : "Description"},
 		                {name : "director", value : "Peter Jackson", prompt : "Director"},
 		                {name : "datePublished", value : "2001-12-19", prompt : "Release Date"}
                 ]
@@ -20,7 +20,7 @@ var server_data = {
                 href : "https://en.wikipedia.org/wiki/The_Hunger_Games_(film_series)",
                 data : [
 		                {name : "name", value : "The Hunger Games", prompt : "Name"},
-                    {name : "description", value : "The Hunger Games film series consists of four science fiction dystopian adventure films based on The Hunger Games trilogy of novels, by the American author Suzanne Collins. Distributed by Lionsgate and produced by Nina Jacobson and Jon Kilik, it stars Jennifer Lawrence as Katniss Everdeen, Josh Hutcherson as Peeta Mellark, Woody Harrelson as Haymitch Abernathy, Elizabeth Banks as Effie Trinket, Philip Seymour Hoffman as Plutarch Heavensbee, Stanley Tucci as Caesar Flickerman, Donald Sutherland as President Snow, and Liam Hemsworth as Gale Hawthorne. Gary Ross directed the first film, while Francis Lawrence directed the next three films.", prompt : "Description"},
+                        {name : "description", value : "The Hunger Games film series consists of four science fiction dystopian adventure films based on The Hunger Games trilogy of novels, by the American author Suzanne Collins. Distributed by Lionsgate and produced by Nina Jacobson and Jon Kilik, it stars Jennifer Lawrence as Katniss Everdeen, Josh Hutcherson as Peeta Mellark, Woody Harrelson as Haymitch Abernathy, Elizabeth Banks as Effie Trinket, Philip Seymour Hoffman as Plutarch Heavensbee, Stanley Tucci as Caesar Flickerman, Donald Sutherland as President Snow, and Liam Hemsworth as Gale Hawthorne. Gary Ross directed the first film, while Francis Lawrence directed the next three films.", prompt : "Description"},
 		                {name : "director", value : "Gary Ross", prompt : "Director"},
 		                {name : "datePublished", value : "2012-03-12", prompt : "Release Date"}
                 ]
@@ -41,12 +41,22 @@ var server_data = {
 
 // TODO: Componente edit-form
 Vue.component('edit-form', {
-
+    
 })
 
 // TODO: Componente item-data
 Vue.component('item-data', {
+    data: function  () {
+        return{
 
+            item: server_data.collection.items
+
+        }
+        
+        },
+
+        template : '#itemData'
+        
 })
 
 // Aplicación VueJS
@@ -54,7 +64,8 @@ Vue.component('item-data', {
 var app = new Vue({
     el: '#app',
     data: {
-        col: server_data
+        col: server_data,
+        item1: server_data.collection.items
     }
 });
 
