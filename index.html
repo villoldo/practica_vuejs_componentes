@@ -18,39 +18,46 @@
           <div class="jumbotron" style="margin-left:10px;">
             <h1 class="display" id="title">{{col.collection.title}}</h1>
           </div>
-          <item-data></item-data>
+            <div class="card-group">
+                <item-data v-for="t in item" :item="t" ></item-data>
+            </div>       
         </div>
 
 
         <!-- Plantilla para el componente edit-form -->
         <script type="text/x-template" id="editForm">
+          <div class="card">
+            <div class="card-body">
+              <dl v-for="d in item.data">
+                <dd>{{d.prompt}}</dd>
+                <input type="text"v-model="d.value">
+              </dl>
+            <button class="btn btn-primary"  v-on:click="closeForm">Cerrar</button> 
+            </div>
+          </div>
           
+        
         </script>
         <!-- Plantilla para el componente item-data -->
         <script type="text/x-template" id="itemData">
-          <div class="container">
-            <div class="card-group">
-            <div class="card"  v-for="item in item"> 
-              <div class="card-body" id="Listado-datos" v-show="datos">
-
-                  <dl v-for="d in item.data">
-                    <dt>{{d.prompt}}</dt>
-                    <dd>{{d.value}}</dd>       
-                  </dl>
-                <a class="btn btn-primary" v-bind:href="item.href" role="button">Ver</a>
-                <button class="btn btn-secondary"  v-on:click="toggleEditFormVisibility()" >Editar</button>
-              </div>
-              <div class="card-body " v-show="edicion">
-                  <dl v-for="d in item.data">
-                    <dd>{{d.prompt}}</dd>
-                    <input type="text"v-model="d.value">
-                  </dl>
-                <button class="btn btn-primary"  v-on:click="closeForm">Cerrar</button> 
-              </div>
-            </div>
-            </div>
+          <div class="card" >
+            <div class="card-body" v-show="datos">
+              <dl v-for="d in item.data">
+                <dt>{{d.prompt}}</dt>
+                <dd>{{d.value}}</dd>       
+              </dl>
+            
+              <a class="btn btn-primary" v-bind:href="item.href" role="button">Ver</a>
+              <button class="btn btn-secondary"  v-on:click="toggleEditFormVisibility" >Editar</button>
           </div>
-
+          <div class="card-body " v-show="edicion">
+            <dl v-for="d in item.data">
+                <dd>{{d.prompt}}</dd>
+                <input type="text"v-model="d.value">
+              </dl>
+            <button class="btn btn-primary"  v-on:click="closeForm">Cerrar</button>
+          </div>
+        </div> 
     </script>
         
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
