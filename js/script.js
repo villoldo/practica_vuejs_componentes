@@ -46,6 +46,14 @@ Vue.component('edit-form', {
         }
     },
     props: ["itemdata"],
+    emits:['formClosed'],
+
+    methods:{
+        closeForm()
+        {
+            this.$emit('formClosed')
+        }
+     },
 
     template : '#editForm'
     

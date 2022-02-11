@@ -26,8 +26,12 @@
 
         <!-- Plantilla para el componente edit-form -->
         <script type="text/x-template" id="editForm">
-              
-        
+          <dl v-for="d in item.data">
+            <dd>{{d.prompt}}</dd>
+            <input v-if="d.prompt != 'Description'" v-model="d.value" type="text">
+            <textarea v-else v-model="d.value" type="text"></textarea>
+          </dl>
+        <button class="btn btn-primary"  v-on:click="formClose">Cerrar</button>    
         </script>
         <!-- Plantilla para el componente item-data -->
         <script type="text/x-template" id="itemData">
