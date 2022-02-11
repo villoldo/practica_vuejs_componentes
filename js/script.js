@@ -1,4 +1,3 @@
-// Sample data
 var server_data = {
     collection :
     {
@@ -43,19 +42,12 @@ var server_data = {
 Vue.component('edit-form', {
     data: function  () {
         return{
-           datos : true
 
         }
     },
     props: ["itemdata"],
-    
-    methods:{
-        closeForm()
-        {
-            
-        }
-     },
-     template : '##editForm'
+
+    template : '#editForm'
     
 })
 
@@ -75,8 +67,12 @@ Vue.component('item-data', {
             {
                     this.datos = false;
                     this.edicion = true;
-               
             },
+            formClose()
+            {
+                this.datos = true;
+                this.edicion = false;
+            }
         
     },
 
@@ -93,4 +89,3 @@ var app = new Vue({
         item:server_data. collection.items
     }
 });
-
